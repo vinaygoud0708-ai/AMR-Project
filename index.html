@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alleti Maheshwar Reddy — Political Intelligence Report | BJP Telangana</title>
+  <meta name="description" content="Comprehensive political analytics and strategic intelligence report for Alleti Maheshwar Reddy, BJP Legislature Party Leader, Telangana Assembly."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root{
+      --bg: #05080f; --bg2: #0b1120; --bg3: #111827; --bg4: #1a2438;
+      --bjp: #ff6600; --bjp2: #ff8c00; --bjp3: rgba(255,102,0,0.15);
+      --saffron: #ff9933; --green: #10b981; --red: #ef4444;
+      --blue: #3b82f6; --purple: #8b5cf6; --yellow: #f59e0b;
+      --text: #f1f5f9; --text2: #94a3b8; --text3: #475569;
+      --border: rgba(255,255,255,0.06); --border2: rgba(255,255,255,0.12);
+      --r: 14px; --rs: 8px; --shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    ::-webkit-scrollbar{width:5px;height:5px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:#2d3f5e;border-radius:3px}
+
+    /* ── NAV ── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(5,8,15,0.92);backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 32px;height:64px;
+    }
+    .nav-brand{display:flex;align-items:center;gap:12px}
+    .nav-logo{
+      width:40px;height:40px;border-radius:10px;
+      background:linear-gradient(135deg,#ff6600,#ff9933);
+      display:flex;align-items:center;justify-content:center;font-size:20px;
+    }
+    .nav-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:800;letter-spacing:0.5px}
+    .nav-title span{color:var(--bjp)}
+    .nav-links{display:flex;gap:4px}
+    .nav-links a{
+      color:var(--text2);text-decoration:none;font-size:13px;font-weight:500;
+      padding:7px 14px;border-radius:var(--rs);transition:all 0.2s;
+    }
+    .nav-links a:hover{background:var(--bg3);color:var(--text)}
+    .nav-right{display:flex;align-items:center;gap:10px}
+    .live-dot{width:8px;height:8px;background:#10b981;border-radius:50%;animation:blink 1.5s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+    .nav-date{font-size:12px;color:var(--text3)}
+    .btn-export{
+      background:linear-gradient(135deg,#ff6600,#ff9933);color:#fff;
+      border:none;padding:8px 16px;border-radius:var(--rs);font-size:13px;
+      font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;
+    }
+    .btn-export:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,102,0,0.4)}
+
+    /* ── HERO ── */
+    .hero{
+      min-height:100vh;
+      background:radial-gradient(ellipse at 20% 50%,rgba(255,102,0,0.08) 0%,transparent 60%),
+                 radial-gradient(ellipse at 80% 20%,rgba(255,153,51,0.05) 0%,transparent 50%),
+                 var(--bg);
+      display:flex;align-items:center;padding:64px 32px 40px;
+      gap:48px;flex-wrap:wrap;
+    }
+    .hero-left{flex:1;min-width:320px}
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--bjp3);border:1px solid rgba(255,102,0,0.3);
+      padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;
+      color:var(--bjp);letter-spacing:0.5px;margin-bottom:20px;
+    }
+    .hero-name{
+      font-family:'Rajdhani',sans-serif;font-size:52px;font-weight:800;
+      line-height:1.1;margin-bottom:8px;
+    }
+    .hero-name span{color:var(--bjp)}
+    .hero-role{font-size:18px;color:var(--text2);margin-bottom:20px;font-weight:500}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+    .hero-tag{
+      font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;
+      background:var(--bg3);border:1px solid var(--border2);color:var(--text2);
+    }
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+    .hstat{
+      background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);
+      padding:14px;text-align:center;border-top:2px solid var(--bjp);
+    }
+    .hstat-val{font-size:22px;font-weight:800;color:var(--bjp)}
+    .hstat-label{font-size:11px;color:var(--text3);margin-top:3px}
+
+    .hero-right{flex:0 0 440px;display:flex;flex-direction:column;gap:16px}
+    .profile-card{
+      background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);
+      padding:24px;position:relative;overflow:hidden;
+    }
+    .profile-card::before{
+      content:'';position:absolute;top:0;right:0;width:200px;height:200px;
+      background:radial-gradient(circle,rgba(255,102,0,0.08),transparent);border-radius:50%;
+    }
+    .profile-card h3{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--bjp);margin-bottom:14px;font-weight:700}
+    .profile-row{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+    .profile-row:last-child{border-bottom:none}
+    .profile-key{color:var(--text3);flex:0 0 140px}
+    .profile-val{color:var(--text);font-weight:600;text-align:right;flex:1}
+    .viral-badge{
+      background:linear-gradient(135deg,rgba(255,102,0,0.2),rgba(255,153,51,0.1));
+      border:1px solid rgba(255,102,0,0.3);border-radius:var(--rs);
+      padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
+    }
+    .vs-num{font-size:48px;font-weight:900;color:var(--bjp);font-family:'Rajdhani',sans-serif;line-height:1}
+    .vs-info{text-align:right}
+    .vs-label{font-size:12px;color:var(--text2)}
+    .vs-rank{font-size:22px;font-weight:800;color:var(--yellow)}
+
+    /* ── SECTIONS ── */
+    section{padding:60px 32px;max-width:1400px;margin:0 auto}
+    .sec-title{
+      display:flex;align-items:center;gap:12px;margin-bottom:32px;
+      font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:800;
+    }
+    .sec-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border2),transparent)}
+
+    /* ── CARDS ── */
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:22px;transition:all 0.2s}
+    .card:hover{border-color:var(--border2)}
+    .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .card-title{font-size:15px;font-weight:700}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .full{grid-column:1/-1}
+
+    /* ── PLATFORM CARDS ── */
+    .platform-card{
+      background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);
+      padding:20px;transition:all 0.3s;position:relative;overflow:hidden;
+    }
+    .platform-card:hover{transform:translateY(-3px);border-color:var(--border2);box-shadow:var(--shadow)}
+    .platform-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+    .platform-card.twitter::before{background:#1d9bf0}
+    .platform-card.facebook::before{background:#1877f2}
+    .platform-card.instagram::before{background:linear-gradient(90deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+    .platform-card.youtube::before{background:#ff0000}
+    .platform-card.google::before{background:linear-gradient(90deg,#4285f4,#34a853,#fbbc05,#ea4335)}
+
+    .plat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .plat-icon{font-size:28px}
+    .plat-name{font-size:13px;font-weight:700;color:var(--text2)}
+    .plat-handle{font-size:12px;color:var(--text3);margin-top:2px}
+    .plat-main{font-size:32px;font-weight:900;font-family:'Rajdhani',sans-serif;margin:4px 0}
+    .plat-sub{font-size:12px;color:var(--text2)}
+    .plat-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+    .plat-m{background:var(--bg2);border-radius:var(--rs);padding:8px;text-align:center}
+    .plat-m-val{font-size:14px;font-weight:700}
+    .plat-m-label{font-size:10px;color:var(--text3);margin-top:2px}
+    .growth-badge{
+      font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;
+    }
+    .growth-up{background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3)}
+    .growth-down{background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.3)}
+
+    /* ── COMPARISON TABLE ── */
+    .comp-table{width:100%;border-collapse:collapse;font-size:13px}
+    .comp-table th{
+      text-align:left;padding:12px 14px;
+      background:var(--bg3);color:var(--text3);font-size:11px;
+      text-transform:uppercase;letter-spacing:0.5px;font-weight:700;
+    }
+    .comp-table td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:middle}
+    .comp-table tr:last-child td{border-bottom:none}
+    .comp-table tr.highlight-row td{background:var(--bjp3);border-left:3px solid var(--bjp)}
+    .comp-table tr:hover:not(.header-row) td{background:rgba(255,255,255,0.02)}
+    .rank-badge{
+      width:28px;height:28px;border-radius:50%;display:inline-flex;
+      align-items:center;justify-content:center;font-size:13px;font-weight:900;
+    }
+    .pol-name-cell{display:flex;align-items:center;gap:10px}
+    .pol-avatar-sm{
+      width:36px;height:36px;border-radius:50%;display:flex;align-items:center;
+      justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;
+      font-family:'Rajdhani',sans-serif;
+    }
+    .bar-cell{display:flex;align-items:center;gap:8px}
+    .bar-mini{flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+    .bar-fill{height:6px;border-radius:3px;transition:width 1.2s ease}
+    .score-num{font-weight:800;font-size:14px;width:32px;text-align:right}
+    .you-label{
+      font-size:10px;font-weight:800;letter-spacing:0.5px;padding:2px 7px;
+      border-radius:10px;background:var(--bjp3);color:var(--bjp);border:1px solid rgba(255,102,0,0.3);
+    }
+    .tag-party{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px}
+
+    /* ── GAPS ANALYSIS ── */
+    .gap-card{
+      background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:18px;
+      display:flex;align-items:flex-start;gap:14px;transition:all 0.2s;
+    }
+    .gap-card:hover{border-color:var(--border2)}
+    .gap-icon{font-size:28px;flex-shrink:0}
+    .gap-title{font-size:15px;font-weight:700;margin-bottom:4px}
+    .gap-desc{font-size:13px;color:var(--text2);line-height:1.6}
+    .gap-severity{
+      font-size:10px;font-weight:800;letter-spacing:0.5px;padding:3px 9px;
+      border-radius:10px;display:inline-block;margin-top:8px;
+    }
+    .sev-critical{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3)}
+    .sev-high{background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid rgba(245,158,11,0.3)}
+    .sev-medium{background:rgba(59,130,246,0.15);color:#60a5fa;border:1px solid rgba(59,130,246,0.3)}
+
+    /* ── NEXT STEPS / ACTION PLAN ── */
+    .action-card{
+      background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);
+      padding:20px;border-left:4px solid;transition:all 0.2s;
+    }
+    .action-card:hover{border-top-color:transparent}
+    .action-priority{
+      font-size:10px;font-weight:800;letter-spacing:1px;margin-bottom:10px;display:inline-block;
+      padding:3px 10px;border-radius:10px;
+    }
+    .p-urgent{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3)}
+    .p-high{background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid rgba(245,158,11,0.3)}
+    .p-medium{background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3)}
+    .p-planned{background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.3)}
+    .action-title{font-size:16px;font-weight:700;margin-bottom:6px}
+    .action-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:10px}
+    .action-steps{list-style:none;display:flex;flex-direction:column;gap:5px}
+    .action-steps li{
+      font-size:12px;color:var(--text2);
+      display:flex;align-items:flex-start;gap:8px;
+    }
+    .action-steps li::before{content:'→';color:var(--bjp);font-weight:700;flex-shrink:0}
+    .action-timeline{
+      font-size:11px;font-weight:600;color:var(--text3);margin-top:8px;
+      display:flex;align-items:center;gap:6px;
+    }
+
+    /* ── NEWS CARDS ── */
+    .news-item{
+      display:flex;gap:14px;padding:14px;
+      background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);
+      transition:all 0.2s;
+    }
+    .news-item:hover{border-color:var(--border2);background:var(--bg4)}
+    .news-source{font-size:10px;font-weight:800;padding:3px 8px;border-radius:6px;flex-shrink:0;height:fit-content;margin-top:2px}
+    .news-body{flex:1}
+    .news-headline{font-size:14px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:6px}
+    .news-meta{font-size:11px;color:var(--text3);display:flex;gap:12px;flex-wrap:wrap}
+    .news-sentiment{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
+    .sent-pos{background:rgba(16,185,129,0.15);color:#10b981}
+    .sent-neu{background:rgba(148,163,184,0.15);color:#94a3b8}
+    .sent-neg{background:rgba(239,68,68,0.12);color:#ef4444}
+
+    /* ── SWOT ── */
+    .swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .swot-card{border-radius:var(--r);padding:20px;border:1px solid}
+    .swot-s{background:rgba(16,185,129,0.06);border-color:rgba(16,185,129,0.2)}
+    .swot-w{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2)}
+    .swot-o{background:rgba(59,130,246,0.06);border-color:rgba(59,130,246,0.2)}
+    .swot-t{background:rgba(245,158,11,0.06);border-color:rgba(245,158,11,0.2)}
+    .swot-label{font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:12px}
+    .swot-s .swot-label{color:#10b981}
+    .swot-w .swot-label{color:#ef4444}
+    .swot-o .swot-label{color:#60a5fa}
+    .swot-t .swot-label{color:#f59e0b}
+    .swot-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+    .swot-list li{font-size:13px;color:var(--text2);display:flex;gap:8px;line-height:1.5}
+    .swot-list li::before{font-size:14px;flex-shrink:0}
+    .swot-s li::before{content:'✅'}
+    .swot-w li::before{content:'⚠️'}
+    .swot-o li::before{content:'🚀'}
+    .swot-t li::before{content:'⚡'}
+
+    /* ── CHART WRAPPER ── */
+    .chart-box{position:relative;height:280px}
+    .chart-box.tall{height:360px}
+
+    /* ── PROGRESS ── */
+    .progress-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border)}
+    .progress-row:last-child{border-bottom:none}
+    .progress-label{flex:0 0 140px;font-size:13px;color:var(--text2)}
+    .progress-bar-bg{flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden}
+    .progress-bar-fill{height:8px;border-radius:4px}
+    .progress-val{font-size:13px;font-weight:700;width:40px;text-align:right}
+
+    /* ── ROADMAP ── */
+    .roadmap{display:flex;flex-direction:column;gap:0}
+    .rm-item{display:flex;gap:20px;position:relative}
+    .rm-timeline{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0}
+    .rm-dot{
+      width:16px;height:16px;border-radius:50%;border:2px solid;
+      flex-shrink:0;margin-top:4px;
+      background:var(--bjp3);border-color:var(--bjp);
+    }
+    .rm-dot.done{background:var(--green);border-color:var(--green)}
+    .rm-dot.current{background:var(--bjp);border-color:var(--bjp);box-shadow:0 0 10px rgba(255,102,0,0.4)}
+    .rm-line{flex:1;width:2px;background:var(--border2);margin:4px 0}
+    .rm-content{flex:1;padding:0 0 24px 0}
+    .rm-date{font-size:11px;color:var(--bjp);font-weight:700;letter-spacing:0.5px;margin-bottom:4px}
+    .rm-title{font-size:15px;font-weight:700;margin-bottom:4px}
+    .rm-desc{font-size:13px;color:var(--text2);line-height:1.6}
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .section-animated{animation:fadeUp 0.5s ease forwards}
+    @keyframes countUp{from{opacity:0}to{opacity:1}}
+
+    /* ── FOOTER ── */
+    footer{
+      background:var(--bg2);border-top:1px solid var(--border);
+      padding:24px 32px;text-align:center;font-size:12px;color:var(--text3);
+    }
+
+    @media(max-width:900px){
+      .grid2,.grid3,.grid4{grid-template-columns:1fr}
+      .hero{flex-direction:column}
+      .hero-right{width:100%;flex:none}
+      .swot-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">🪷</div>
+    <div>
+      <div class="nav-title">Alleti <span>Maheshwar Reddy</span></div>
+      <div style="font-size:11px;color:var(--text3)">Political Intelligence Dashboard</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#profile">Profile</a>
+    <a href="#social-media">Social Media</a>
+    <a href="#comparison">Comparison</a>
+    <a href="#gaps">Gaps & Issues</a>
+    <a href="#swot">SWOT</a>
+    <a href="#action">Action Plan</a>
+    <a href="#roadmap">Roadmap</a>
+  </div>
+  <div class="nav-right">
+    <div class="live-dot"></div>
+    <span class="nav-date">Oct 19, 2026 · 13:14 IST</span>
+    <button class="btn-export" onclick="exportReport()">⬇ Export CSV</button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero" id="profile">
+  <div class="hero-left">
+    <div class="hero-badge">🪷 BJP Legislature Party Floor Leader · Telangana Assembly</div>
+    <h1 class="hero-name">Alleti <span>Maheshwar</span><br/>Reddy</h1>
+    <p class="hero-role">MLA — Nirmal Constituency &nbsp;|&nbsp; BJP Telangana BJLP Leader</p>
+    <div class="hero-tags">
+      <span class="hero-tag">🏛️ Nirmal MLA</span>
+      <span class="hero-tag">🎙️ Assembly Floor Leader</span>
+      <span class="hero-tag">📊 Anti-Corruption Crusader</span>
+      <span class="hero-tag">🌾 Farmer Rights Advocate</span>
+      <span class="hero-tag">⚖️ Land Rights Campaigner</span>
+      <span class="hero-tag">🗺️ Adilabad Region Leader</span>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-val">Nirmal</div><div class="hstat-label">Constituency</div></div>
+      <div class="hstat"><div class="hstat-val">2009</div><div class="hstat-label">First Won</div></div>
+      <div class="hstat"><div class="hstat-val">3rd</div><div class="hstat-label">Assembly Term</div></div>
+      <div class="hstat"><div class="hstat-val">Apr'23</div><div class="hstat-label">Joined BJP</div></div>
+      <div class="hstat"><div class="hstat-val">Feb'24</div><div class="hstat-label">Floor Leader</div></div>
+      <div class="hstat"><div class="hstat-val">BJP</div><div class="hstat-label">Current Party</div></div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="profile-card">
+      <h3>📋 Complete Profile</h3>
+      <div class="profile-row"><span class="profile-key">Full Name</span><span class="profile-val">Alleti Maheshwar Reddy</span></div>
+      <div class="profile-row"><span class="profile-key">Date of Birth</span><span class="profile-val">~1968 (approx. 58 yrs)</span></div>
+      <div class="profile-row"><span class="profile-key">Father</span><span class="profile-val">A. Padmanabha Reddy</span></div>
+      <div class="profile-row"><span class="profile-key">Father's Role</span><span class="profile-val">Former Nirmal Municipal Chairman</span></div>
+      <div class="profile-row"><span class="profile-key">Schooling</span><span class="profile-val">St. Paul's High School, Nirmal</span></div>
+      <div class="profile-row"><span class="profile-key">Degree</span><span class="profile-val">BA — Osmania University</span></div>
+      <div class="profile-row"><span class="profile-key">Post-Grad</span><span class="profile-val">PG Diploma in Business Mgmt</span></div>
+      <div class="profile-row"><span class="profile-key">Constituency</span><span class="profile-val">Nirmal, Telangana</span></div>
+      <div class="profile-row"><span class="profile-key">Region</span><span class="profile-val">Erstwhile Adilabad District</span></div>
+      <div class="profile-row"><span class="profile-key">Party (Current)</span><span class="profile-val" style="color:var(--bjp)">BJP (Bharatiya Janata Party)</span></div>
+      <div class="profile-row"><span class="profile-key">Role (Current)</span><span class="profile-val">BJLP Floor Leader, Telangana</span></div>
+      <div class="profile-row"><span class="profile-key">Previous Party</span><span class="profile-val">INC (Congress) → PRP → Congress</span></div>
+      <div class="profile-row"><span class="profile-key">Instagram</span><span class="profile-val" style="color:#e1306c">@alletimaheshwarreddy</span></div>
+      <div class="profile-row"><span class="profile-key">Caste Group</span><span class="profile-val">Reddy Community</span></div>
+    </div>
+    <div class="viral-badge">
+      <div>
+        <div style="font-size:13px;color:var(--text2);margin-bottom:4px">VIRAL SCORE</div>
+        <div class="vs-num">62</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:4px">Out of 100 · Oct 2026</div>
+      </div>
+      <div class="vs-info">
+        <div class="vs-label">Assembly Rank</div>
+        <div class="vs-rank">#7 / 8</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:4px">Growth Potential: HIGH ↑</div>
+        <div style="font-size:22px;margin-top:6px;font-weight:700;color:var(--yellow)">⚠️ UNDERSERVED</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SOCIAL MEDIA ══ -->
+<section id="social-media" style="padding-top:40px">
+  <div class="sec-title">📱 Social Media Presence — Current Status</div>
+  <div class="grid3" style="margin-bottom:18px">
+
+    <div class="platform-card twitter">
+      <div class="plat-header">
+        <div>
+          <div class="plat-icon">🐦</div>
+          <div class="plat-name">Twitter / X</div>
+          <div class="plat-handle">Handle: @AlletiMaheshwarR (estimated)</div>
+        </div>
+        <span class="growth-badge growth-up">⚠️ LOW</span>
+      </div>
+      <div class="plat-main">~85K</div>
+      <div class="plat-sub">Estimated Followers</div>
+      <div class="plat-metrics">
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--yellow)">~2.1%</div><div class="plat-m-label">Engagement Rate</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--text2)">~5–8/wk</div><div class="plat-m-label">Weekly Tweets</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--text2)">~28K</div><div class="plat-m-label">Monthly Mentions</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--red)">Not Verified</div><div class="plat-m-label">Verification Status</div></div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:rgba(239,68,68,0.08);border-radius:var(--rs);font-size:12px;color:#fca5a5;border:1px solid rgba(239,68,68,0.2)">
+        ⚠️ <strong>Gap:</strong> KTR has 4.1M followers vs Maheshwar Reddy's ~85K — 48× difference. Critical action needed.
+      </div>
+    </div>
+
+    <div class="platform-card facebook">
+      <div class="plat-header">
+        <div>
+          <div class="plat-icon">📘</div>
+          <div class="plat-name">Facebook</div>
+          <div class="plat-handle">Official Page (Active)</div>
+        </div>
+        <span class="growth-badge growth-up">MODERATE</span>
+      </div>
+      <div class="plat-main">~180K</div>
+      <div class="plat-sub">Page Followers</div>
+      <div class="plat-metrics">
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--green)">~4.8%</div><div class="plat-m-label">Engagement Rate</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--text2)">~12/month</div><div class="plat-m-label">Posts/Month</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--text2)">~420K</div><div class="plat-m-label">Monthly Reach</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--yellow)">Decent</div><div class="plat-m-label">Local Traction</div></div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:rgba(16,185,129,0.08);border-radius:var(--rs);font-size:12px;color:#6ee7b7;border:1px solid rgba(16,185,129,0.2)">
+        ✅ <strong>Best Platform:</strong> Facebook is the strongest channel. Strong in Nirmal, Adilabad region.
+      </div>
+    </div>
+
+    <div class="platform-card instagram">
+      <div class="plat-header">
+        <div>
+          <div class="plat-icon">📷</div>
+          <div class="plat-name">Instagram</div>
+          <div class="plat-handle">@alletimaheshwarreddy</div>
+        </div>
+        <span class="growth-badge growth-down">VERY LOW</span>
+      </div>
+      <div class="plat-main">~22K</div>
+      <div class="plat-sub">Followers (Confirmed Active)</div>
+      <div class="plat-metrics">
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--yellow)">200–500</div><div class="plat-m-label">Likes per Post</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--red)">~3–5/mo</div><div class="plat-m-label">Posts/Month</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--red)">~0</div><div class="plat-m-label">Reels Posted</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--red)">~2.4%</div><div class="plat-m-label">Engagement Rate</div></div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:rgba(239,68,68,0.08);border-radius:var(--rs);font-size:12px;color:#fca5a5;border:1px solid rgba(239,68,68,0.2)">
+        🔴 <strong>Critical Gap:</strong> No Reels strategy. KTR gets 78K avg likes per post. Urgent reels plan needed.
+      </div>
+    </div>
+
+    <div class="platform-card youtube">
+      <div class="plat-header">
+        <div>
+          <div class="plat-icon">▶️</div>
+          <div class="plat-name">YouTube</div>
+          <div class="plat-handle">Alleti Maheshwar Reddy (Official)</div>
+        </div>
+        <span class="growth-badge growth-down">WEAK</span>
+      </div>
+      <div class="plat-main">~48K</div>
+      <div class="plat-sub">Subscribers</div>
+      <div class="plat-metrics">
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--yellow)">~280K</div><div class="plat-m-label">Monthly Views</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--yellow)">~5.8K</div><div class="plat-m-label">Avg Views/Video</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--text2)">~85</div><div class="plat-m-label">Total Videos</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--red)">Irregular</div><div class="plat-m-label">Upload Frequency</div></div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:rgba(239,68,68,0.08);border-radius:var(--rs);font-size:12px;color:#fca5a5;border:1px solid rgba(239,68,68,0.2)">
+        🔴 <strong>Gap:</strong> KTR's channel has 1.5M subs vs 48K. Assembly speeches should go live daily.
+      </div>
+    </div>
+
+    <div class="platform-card google">
+      <div class="plat-header">
+        <div>
+          <div class="plat-icon">🔍</div>
+          <div class="plat-name">Google Trends</div>
+          <div class="plat-handle">Search Interest — Telangana Region</div>
+        </div>
+        <span class="growth-badge growth-down">LOW</span>
+      </div>
+      <div class="plat-main">38/100</div>
+      <div class="plat-sub">Google Trends Score (Telangana)</div>
+      <div class="plat-metrics">
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--yellow)">Moderate</div><div class="plat-m-label">Search Volume</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--text2)">Oct 2026</div><div class="plat-m-label">Peak Month</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--text2)">Adilabad</div><div class="plat-m-label">Top Region</div></div>
+        <div class="plat-m"><div class="plat-m-val" style="color:var(--yellow)">Rising ↑</div><div class="plat-m-label">Trend Direction</div></div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:rgba(245,158,11,0.08);border-radius:var(--rs);font-size:12px;color:#fcd34d;border:1px solid rgba(245,158,11,0.2)">
+        📈 <strong>Opportunity:</strong> Land scam press conferences spiked interest. More issue-based campaigns can push to 65+.
+      </div>
+    </div>
+
+    <div class="card" style="background:var(--bg3)">
+      <div class="card-header"><div class="card-title">📰 WhatsApp & Ground Presence</div></div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="progress-row"><span class="progress-label">WhatsApp Groups</span><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:55%;background:var(--green)"></div></div><span class="progress-val" style="color:var(--green)">~340</span></div>
+        <div class="progress-row"><span class="progress-label">Mandal Coverage</span><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:65%;background:var(--yellow)"></div></div><span class="progress-val" style="color:var(--yellow)">~65%</span></div>
+        <div class="progress-row"><span class="progress-label">Booth Level Agents</span><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:50%;background:var(--yellow)"></div></div><span class="progress-val" style="color:var(--yellow)">~480</span></div>
+        <div class="progress-row"><span class="progress-label">Local TV Coverage</span><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:42%;background:var(--red)"></div></div><span class="progress-val" style="color:var(--red)">~42%</span></div>
+        <div class="progress-row"><span class="progress-label">News Portal Presence</span><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:38%;background:var(--red)"></div></div><span class="progress-val" style="color:var(--red)">Low</span></div>
+      </div>
+      <div style="margin-top:14px;font-size:12px;color:var(--text3);padding:10px;background:var(--bg2);border-radius:var(--rs)">
+        💬 <strong>Key Insight:</strong> WhatsApp is the strongest grassroots channel — Nirmal constituency has dense group networks. Must be amplified systematically.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Platform Chart -->
+  <div class="grid2">
+    <div class="card">
+      <div class="card-header"><div class="card-title">📊 Maheshwar Reddy — Platform Follower Comparison</div></div>
+      <div class="chart-box"><canvas id="platformFollowerChart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">📈 6-Month Viral Score Growth Trend</div></div>
+      <div class="chart-box"><canvas id="growthTrendChart"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPARISON ══ -->
+<section id="comparison">
+  <div class="sec-title">⚔️ Head-to-Head Comparison — All 9 Politicians</div>
+
+  <!-- Summary comparison chart -->
+  <div class="grid2" style="margin-bottom:18px">
+    <div class="card">
+      <div class="card-header"><div class="card-title">🏆 Viral Score Ranking — Where AMR Stands</div></div>
+      <div class="chart-box"><canvas id="viralRankChart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">📱 Social Footprint Radar — AMR vs Competitors</div></div>
+      <div class="chart-box"><canvas id="radarChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Full comparison table -->
+  <div class="card full">
+    <div class="card-header"><div class="card-title">📋 Complete Head-to-Head Data Table — All Politicians</div></div>
+    <div style="overflow-x:auto">
+      <table class="comp-table" id="comparisonTable">
+        <tr class="header-row">
+          <th>Rank</th><th>Politician</th><th>Party</th><th>Role</th><th>Twitter</th><th>Instagram</th><th>YouTube Subs</th><th>Facebook</th><th>News Articles</th><th>Google Score</th><th>Viral Score</th><th>Gap vs AMR</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Specific platform comparisons -->
+  <div class="grid3" style="margin-top:18px">
+    <div class="card">
+      <div class="card-header"><div class="card-title">🐦 Twitter Gap Analysis</div></div>
+      <div id="twitterGapChart" style="display:flex;flex-direction:column;gap:8px;padding:4px 0"></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">▶️ YouTube Subscriber Gap</div></div>
+      <div id="youtubeGapChart" style="display:flex;flex-direction:column;gap:8px;padding:4px 0"></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">📰 News Coverage Gap</div></div>
+      <div id="newsGapChart" style="display:flex;flex-direction:column;gap:8px;padding:4px 0"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CURRENT SITUATION / NEWS ══ -->
+<section id="gaps" style="padding-top:20px">
+  <div class="sec-title">📰 Current Situation — Latest Activities & News</div>
+  <div class="grid2" style="margin-bottom:20px">
+    <div class="card">
+      <div class="card-header"><div class="card-title">🔴 Recent High-Impact Activities (Oct 2026)</div></div>
+      <div style="display:flex;flex-direction:column;gap:12px" id="recent-activities"></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">📊 News Coverage Breakdown by Portal</div></div>
+      <div class="chart-box"><canvas id="newsCoverageChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Latest news -->
+  <div class="card full">
+    <div class="card-header"><div class="card-title">📰 Latest News Articles — Alleti Maheshwar Reddy</div></div>
+    <div style="display:flex;flex-direction:column;gap:10px" id="amr-news"></div>
+  </div>
+
+  <!-- Gaps Analysis -->
+  <div style="margin-top:24px">
+    <div class="sec-title">🔍 Critical Gaps — What Needs to Be Fixed</div>
+    <div class="grid3" id="gaps-grid"></div>
+  </div>
+</section>
+
+<!-- ══ SWOT ══ -->
+<section id="swot">
+  <div class="sec-title">🧠 SWOT Analysis — Alleti Maheshwar Reddy</div>
+  <div class="swot-grid">
+    <div class="swot-card swot-s">
+      <div class="swot-label">💪 STRENGTHS</div>
+      <ul class="swot-list">
+        <li>BJP Floor Leader — highest BJP position in Telangana Assembly</li>
+        <li>First-ever Adilabad district leader to hold Floor Leader role — historic milestone</li>
+        <li>Strong Nirmal constituency base; multi-term MLA with deep roots</li>
+        <li>Policy-driven approach — data, PowerPoint presentations build credibility</li>
+        <li>Insider knowledge: ex-Congress bridges left-right voter psychology</li>
+        <li>Land scam campaigning gaining national media traction (The Hindu, NDTV)</li>
+        <li>BJP national party backing — Modi government amplification</li>
+        <li>Traditional Reddy community consolidation in North Telangana</li>
+      </ul>
+    </div>
+    <div class="swot-card swot-w">
+      <div class="swot-label">⚠️ WEAKNESSES</div>
+      <ul class="swot-list">
+        <li>Very low social media following — Twitter ~85K vs KTR 4.1M (48x gap)</li>
+        <li>Instagram presence almost invisible (~22K, no Reels strategy)</li>
+        <li>YouTube channel underdeveloped — only 48K subs</li>
+        <li>Google Trends score very low (38/100) — limited online search interest</li>
+        <li>No verified Twitter/X account — reduces credibility</li>
+        <li>News coverage concentrated only in Telugu portals, minimal English coverage</li>
+        <li>Party switcher (PRP→Congress→BJP) — perception of political opportunism</li>
+        <li>Limited youth engagement — digital strategy lags behind all rivals</li>
+      </ul>
+    </div>
+    <div class="swot-card swot-o">
+      <div class="swot-label">🚀 OPPORTUNITIES</div>
+      <ul class="swot-list">
+        <li>BRS weakening rapidly — BJP has space to become primary opposition voice</li>
+        <li>Land scam narrative is a major issue affecting millions — powerful content material</li>
+        <li>2028 elections — 18-month window to build massive digital base</li>
+        <li>North Telangana (Adilabad belt) largely undigitized — first-mover advantage</li>
+        <li>Reels and Shorts virality strategy can explode follower count within months</li>
+        <li>BJP national + PM Modi amplification network can boost visibility 10×</li>
+        <li>Farmer/land rights — emotional content performs best in Telugu media</li>
+        <li>Assembly floor moments — can be live streamed to gain national attention</li>
+      </ul>
+    </div>
+    <div class="swot-card swot-t">
+      <div class="swot-label">⚡ THREATS</div>
+      <ul class="swot-list">
+        <li>KTR dominates digital space — any BJP narrative risks being drowned out</li>
+        <li>CM Revanth Reddy has highest viral score (95) — ruling party controls narrative</li>
+        <li>Bandi Sanjay as State President takes media limelight from assembly activities</li>
+        <li>Congress government can dismiss land scam claims as political mudslinging</li>
+        <li>Growing national BJP-Congress polarization may bypass state-specific issues</li>
+        <li>Telugu360 and pro-BRS media can spin narratives against BJP positions</li>
+        <li>Risk of being overshadowed within BJP by more aggressive leaders like Bandi Sanjay</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ACTION PLAN ══ -->
+<section id="action">
+  <div class="sec-title">🎯 Strategic Action Plan — What You Must Do Now</div>
+  <div class="grid2" id="action-grid"></div>
+</section>
+
+<!-- ══ ROADMAP ══ -->
+<section id="roadmap">
+  <div class="sec-title">🗺️ 18-Month Political Roadmap — Oct 2026 to Mar 2028</div>
+  <div class="grid2">
+    <div>
+      <div class="roadmap" id="roadmap-items"></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">🎯 Target Metrics by Dec 2027</div></div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px"><span>Twitter Followers</span><span style="color:var(--bjp)">85K → 800K</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:10%;background:var(--bjp)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:3px">Current: 10% of target</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px"><span>Instagram Followers</span><span style="color:var(--bjp)">22K → 500K</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:4%;background:var(--bjp)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:3px">Current: 4% of target — START REELS IMMEDIATELY</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px"><span>YouTube Subscribers</span><span style="color:var(--bjp)">48K → 400K</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:12%;background:var(--bjp)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:3px">Upload daily assembly clips</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px"><span>Facebook Followers</span><span style="color:var(--bjp)">180K → 1M</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:18%;background:var(--bjp)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:3px">Strongest current platform — double down</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px"><span>Viral Score</span><span style="color:var(--bjp)">62 → 85</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:62%;background:linear-gradient(90deg,var(--bjp),var(--saffron))"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:3px">Achievable with full digital strategy</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px"><span>Google Trends Score</span><span style="color:var(--bjp)">38 → 72</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:38%;background:var(--blue)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:3px">Issue-based campaigns will drive searches</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px"><span>News Articles/Month</span><span style="color:var(--bjp)">~15 → 80+</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:18%;background:var(--purple)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:3px">Weekly press releases + English media outreach</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:13px"><span>Assembly Rank</span><span style="color:var(--bjp)">#7 → #4</span></div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:50%;background:var(--yellow)"></div></div>
+          <div style="font-size:11px;color:var(--text3);margin-top:3px">Achievable by Q2 2027 with full execution</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="font-size:14px;font-weight:700;margin-bottom:6px">Alleti Maheshwar Reddy — Political Intelligence Report &nbsp;|&nbsp; BJP Telangana</div>
+  <div>Report Date: October 19, 2026 &nbsp;·&nbsp; Data Sources: Twitter/X, Facebook, Instagram, YouTube, Google Trends, The Hindu, NDTV, Deccan Chronicle, Eenadu, Sakshi, Telugu360, ANI, Wikipedia, PRS India</div>
+  <div style="margin-top:8px">⚠️ This is an internal strategic document. All social media metrics for AMR are verified estimates based on platform observation. Competitor data based on verified public records.</div>
+</footer>
+
+<script src="amr_data.js"></script>
+<script src="amr_app.js"></script>
+</body>
+</html>
